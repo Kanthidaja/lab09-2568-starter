@@ -1,4 +1,17 @@
+import {useState} from "react"
+
 export default function HelloMyNamePage() {
+  const [name,setname] = useState("");
+  const[result,SetResult]=useState("Please insert your name"); 
+  const [isGreetOk,setGreetOk] = useState(false);
+  const greetBtnOnClick = () => {
+    if(name === ''){ SetResult("Please insert your name"); setGreetOk(false); }else{
+    SetResult(`Hello ${name}`);
+    setGreetOk(true);}
+  }
+  const nameInput = (event:any) => {
+    setname(event?.target.value);
+  }
   return (
     <div className="container text-center">
       <h3>Hello My Name</h3>
@@ -6,10 +19,12 @@ export default function HelloMyNamePage() {
         className="form-control d-inline m-1"
         placeholder="Insert your name here!"
         style={{ width: "300px" }}
+        onChange={nameInput}
+        value={name}
       />
-      <button className="btn btn-primary">Greet Me</button>
+      <button className="btn btn-primary" onClick={greetBtnOnClick}>Greet Me</button>
       {/* Result Text */}
-      <p></p>
+      <p className={isGreetOk? "text" : "text-danger"}>{result}</p>
     </div>
   );
 }

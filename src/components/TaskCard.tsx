@@ -11,7 +11,7 @@ export default function TaskCard({
   id,
   title,
   description,
-  isDone,
+  isDone = false,
   deleteTaskFunc,
   toggleDoneTaskFunc,
 }: props) {
@@ -22,6 +22,11 @@ export default function TaskCard({
 
   const toggleDoneBtnOnClick = () => {
     toggleDoneTaskFunc(id);
+    if(!isDone){
+      isDone = true;
+    }else{
+      isDone = false;
+    }
   };
 
   return (
@@ -31,7 +36,7 @@ export default function TaskCard({
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-4">
             <h5
               className={
-                isDone
+                isDone 
                   ? "text-decoration-line-through card-title"
                   : "card-title"
               }
