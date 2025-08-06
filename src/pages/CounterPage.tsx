@@ -10,7 +10,6 @@ export default function CounterPage() {
       <h2>Counter Page</h2>
       {/* Result Text */}
       <p>Counter:{counter}</p>
-      <p>Counter:</p>
       <button onClick={addCounter}>Increase</button>
     </div>
   );
